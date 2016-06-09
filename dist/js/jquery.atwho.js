@@ -308,8 +308,15 @@ App = (function() {
   };
 
   App.prototype.onKeydown = function(e) {
-    var ref, view;
+    var atwoQueryEl, ref, view;
     view = (ref = this.controller()) != null ? ref.view : void 0;
+    if (e.keyCode === KEY_CODE.ENTER && view && !view.visible()) {
+      atwoQueryEl = this.$inputor.find('.atwho-query')[0];
+      if (atwoQueryEl) {
+        atwoQueryEl.outerHTML = atwoQueryEl.textContent;
+      }
+      return;
+    }
     if (!(view && view.visible())) {
       return;
     }

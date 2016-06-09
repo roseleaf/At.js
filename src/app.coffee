@@ -124,6 +124,10 @@ class App
   onKeydown: (e) ->
     # return if not (view = this.controller().view).visible()
     view = this.controller()?.view
+    if e.keyCode == KEY_CODE.ENTER and view and !view.visible()
+      atwoQueryEl = @$inputor.find('.atwho-query')[0]
+      atwoQueryEl.outerHTML = atwoQueryEl.textContent if atwoQueryEl
+      return
     return if not (view and view.visible())
     switch e.keyCode
       when KEY_CODE.ESC
